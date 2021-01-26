@@ -21,6 +21,10 @@ Or install it yourself as:
 Simple Usage Example:
 
 ```ruby
+require 'json'
+require 'net/http'
+require 'gistcafe'
+
 org_name = "ruby"
 uri = URI.parse("https://api.github.com/orgs/#{org_name}/repos")
 
@@ -30,7 +34,6 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 req = Net::HTTP::Get.new(uri.request_uri)
 req["User-Agent"] = "gist.cafe"
-req["Content-Type"] = "application/json"
 
 res = http.request(req)
 org_repos = JSON.parse(res.body).map {|x| { 

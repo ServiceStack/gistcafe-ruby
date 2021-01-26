@@ -20,7 +20,6 @@ RSpec.describe Inspect do
     # http.set_debug_output($stderr)
     req = Net::HTTP::Get.new(uri.request_uri)
     req["User-Agent"] = "gist.cafe"
-    req["Content-Type"] = "application/json"
 
     res = http.request(req)
     org_repos = JSON.parse(res.body).map {|x| { 
