@@ -99,9 +99,9 @@ module Inspect
 
     def self.align_left(str, len, pad=" ")
         return "" if len < 0
-        a_len = len + 1 + str.length
+        a_len = len + 1 - str.length
         return str if a_len <= 0
-        "#{pad}#{str}#{pad * (len + 1 - str.length)}"
+        "#{pad}#{str}#{pad * a_len}"
     end
 
     def self.align_center(str, len, pad=" ")
@@ -115,9 +115,9 @@ module Inspect
 
     def self.align_right(str, len, pad=" ")
         return "" if len < 0
-        a_len = len + 1 + str.length
+        a_len = len + 1 - str.length
         return str if a_len <= 0
-        "#{pad * (len + 1 - str.length)}#{str}#{pad}"
+        "#{pad * a_len}#{str}#{pad}"
     end
 
     def self.align_auto(obj, len, pad=" ")
